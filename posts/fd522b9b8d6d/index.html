@@ -1,0 +1,366 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>連筆電都懶得帶? 那就在 Android 上跑 VS Code 吧! | Termux , PRoot , VS Code Server | 月奈 · 筆記</title><meta name="keywords" content="Android,Termux,Linux,Visual Studio Code"><meta name="author" content="星雨月奈"><meta name="copyright" content="星雨月奈"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言最近發現隨著東西越看越多，有些東西還是會忘，雖然說有加書籤整理，但這樣翻起來還是有點雜，所以決定來寫文章，當作筆記紀錄，由於是一開始，就挑個輕鬆有趣的主題 ? 至於為甚麼要在手機上跑 Visual Studio Code ?很簡單，就是懶，廢話不多說讓我們來開始吧! 簡介由於本篇是屬於輕鬆有趣的文章，所以跳過原理部分。 本次主要會用到的東西  Termux - Android 上的終端模擬器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="連筆電都懶得帶? 那就在 Android 上跑 VS Code 吧! | Termux , PRoot , VS Code Server">
+<meta property="og:url" content="https://stardusstt.github.io/posts/fd522b9b8d6d/index.html">
+<meta property="og:site_name" content="月奈 · 筆記">
+<meta property="og:description" content="前言最近發現隨著東西越看越多，有些東西還是會忘，雖然說有加書籤整理，但這樣翻起來還是有點雜，所以決定來寫文章，當作筆記紀錄，由於是一開始，就挑個輕鬆有趣的主題 ? 至於為甚麼要在手機上跑 Visual Studio Code ?很簡單，就是懶，廢話不多說讓我們來開始吧! 簡介由於本篇是屬於輕鬆有趣的文章，所以跳過原理部分。 本次主要會用到的東西  Termux - Android 上的終端模擬器">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/5kqtPtu.png">
+<meta property="article:published_time" content="2022-08-13T15:49:31.962Z">
+<meta property="article:modified_time" content="2022-08-13T15:47:00.780Z">
+<meta property="article:author" content="星雨月奈">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="Termux">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Visual Studio Code">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/5kqtPtu.png"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="https://stardusstt.github.io/posts/fd522b9b8d6d/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-KDRW9HFSNC"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-KDRW9HFSNC');
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: 星雨月奈","link":"連結: ","source":"來源: 月奈 · 筆記","info":"著作權歸作者所有。商業轉載請聯絡作者獲得授權，非商業轉載請註明出處。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '連筆電都懶得帶? 那就在 Android 上跑 VS Code 吧! | Termux , PRoot , VS Code Server',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-08-13 23:47:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">載入中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "/img/loading.svg" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">1</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-house"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa-solid fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa-solid fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa-solid fa-box-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa-solid fa-comments"></i><span> Comments</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa-solid fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.imgur.com/5kqtPtu.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">月奈 · 筆記</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-house"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa-solid fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa-solid fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa-solid fa-box-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa-solid fa-comments"></i><span> Comments</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa-solid fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">連筆電都懶得帶? 那就在 Android 上跑 VS Code 吧! | Termux , PRoot , VS Code Server</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2022-08-13T15:49:31.962Z" title="發表於 2022-08-13 23:49:31">2022-08-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2022-08-13T15:47:00.780Z" title="更新於 2022-08-13 23:47:00">2022-08-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Android/">Android</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字數總計:</span><span class="word-count">1.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀時長:</span><span>5分鐘</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="連筆電都懶得帶? 那就在 Android 上跑 VS Code 吧! | Termux , PRoot , VS Code Server"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近發現隨著東西越看越多，有些東西還是會忘，雖然說有加書籤整理，但這樣翻起來還是有點雜，<br>所以決定來寫文章，當作筆記紀錄，由於是一開始，就挑個輕鬆有趣的主題 ?</p>
+<p>至於為甚麼要在手機上跑 Visual Studio Code ?<br>很簡單，就是懶，廢話不多說讓我們來開始吧!</p>
+<h1 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h1><p>由於本篇是屬於輕鬆有趣的文章，所以跳過原理部分。</p>
+<p>本次主要會用到的東西</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/termux/termux-app">Termux</a> - Android 上的終端模擬器</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/termux/proot-distro">PRoot Distro</a> - wrapper for proot</li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/remote/vscode-server">Visual Studio Code Server</a></li>
+</ul>
+<p>原理是藉由在 Termux 上使用 proot 安裝 Linux，並在 Linux 上安裝 Visual Studio Code Server，<br>然後由手機的瀏覽器 (e.g. Chrome) 顯示。</p>
+<h1 id="Termux-環境建置"><a href="#Termux-環境建置" class="headerlink" title="Termux 環境建置"></a>Termux 環境建置</h1><h2 id="安裝-Termux"><a href="#安裝-Termux" class="headerlink" title="安裝 Termux"></a>安裝 Termux</h2><p>由於 Play Store 的版本<a target="_blank" rel="noopener" href="https://github.com/termux/termux-app#google-play-store-deprecated">已經棄用</a>，我們可以選擇 <a target="_blank" rel="noopener" href="https://f-droid.org/en/packages/com.termux/">F-Droid</a> 或 <a target="_blank" rel="noopener" href="https://github.com/termux/termux-app">Github</a> 的版本</p>
+<blockquote>
+<p><strong>注意:</strong> Github 版本為 <a target="_blank" rel="noopener" href="https://github.com/termux/termux-app#github">debuggable</a>，與 F-Droid 不通用。</p>
+</blockquote>
+<h2 id="存取手機的儲存空間"><a href="#存取手機的儲存空間" class="headerlink" title="存取手機的儲存空間"></a>存取手機的儲存空間</h2><p>為了讓我們可以<a target="_blank" rel="noopener" href="https://wiki.termux.com/wiki/Internal_and_external_storage">從 Termux 存取手機的儲存空間</a>，需要進行設定，<br>打開 Termux，輸入指令，執行後會跳出 Android 的詢問，同意即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">termux-setup-storage</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/uwjzLjS.jpg" alt="termux-setup-storage"></p>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>這裡我習慣用 apt</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/6M5AvDn.jpg" alt="apt update"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt upgrade</span><br></pre></td></tr></table></figure>
+<p>記得輸入 y 後繼續</p>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/cGkmD8N.jpg" alt="apt upgrade"></p>
+<br/>
+
+<p>途中可能會跳出設定檔版本衝突，如果你沒有做甚麼更改，用 <code>package maintainer&#39;s version</code> 即可，輸入 Y</p>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/I3cvIiW.jpg" alt="configuration file"></p>
+<h2 id="安裝-OpenSSH"><a href="#安裝-OpenSSH" class="headerlink" title="安裝 OpenSSH"></a>安裝 OpenSSH</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install openssh</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/v3AOTht.jpg" alt="apt install openssh"></p>
+<h1 id="配置-SSH-server，從電腦打指令-可選"><a href="#配置-SSH-server，從電腦打指令-可選" class="headerlink" title="配置 SSH server，從電腦打指令 (可選)"></a>配置 SSH server，從電腦打指令 (可選)</h1><p>為了方便，我們可以配置 <a target="_blank" rel="noopener" href="https://wiki.termux.com/wiki/Remote_Access">SSH server</a>，從電腦上打指令比較方便(本文設備在同一個 local network 下)<br>當然，你也可以在手機上處理</p>
+<h2 id="配置密碼"><a href="#配置密碼" class="headerlink" title="配置密碼"></a>配置密碼</h2><p>等一下從電腦登入會用到</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/8xGBZEu.jpg" alt="passwd"></p>
+<h2 id="啟動-OpenSSH-server"><a href="#啟動-OpenSSH-server" class="headerlink" title="啟動 OpenSSH server"></a>啟動 OpenSSH server</h2><p><code>啟動</code> OpenSSH server</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshd</span><br></pre></td></tr></table></figure>
+
+<p>若要<code>關閉</code> OpenSSH server</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkill sshd</span><br></pre></td></tr></table></figure>
+
+<h2 id="確認使用者"><a href="#確認使用者" class="headerlink" title="確認使用者"></a>確認使用者</h2><p>確認要登入的使用者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">whoami</span></span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/t2CJp0o.jpg" alt="whoami"></p>
+<h2 id="確認手機-IP"><a href="#確認手機-IP" class="headerlink" title="確認手機 IP"></a>確認手機 IP</h2><p>確認手機的 LAN IP，可輸入 <code>ifconfig</code>，你也可以從其他地方看</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<h2 id="從電腦登入"><a href="#從電腦登入" class="headerlink" title="從電腦登入"></a>從電腦登入</h2><p>Windows 10 1809 後已經支援 openssh<br>從電腦登入，Termux 預設的 <code>SSH port</code> 為 <code>8022</code></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh <span class="literal">-p</span> <span class="number">8022</span> user@hostname_or_ip</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/f8QXT28.png" alt="ssh"></p>
+<h1 id="Linux-環境建置"><a href="#Linux-環境建置" class="headerlink" title="Linux 環境建置"></a>Linux 環境建置</h1><h2 id="安裝-proot-distro"><a href="#安裝-proot-distro" class="headerlink" title="安裝 proot-distro"></a>安裝 proot-distro</h2><p>安裝 <a target="_blank" rel="noopener" href="https://github.com/termux/proot-distro">proot-distro</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install proot-distro</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.svg" data-lazy-src="https://imgur.com/CCLrsuS" alt="apt install proot-distro"></p>
+<h2 id="proot-distro-list"><a href="#proot-distro-list" class="headerlink" title="proot-distro list"></a>proot-distro list</h2><p>列出可以用的 Linux distribution、安裝狀態等資訊</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proot-distro list</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/qkZ4u8y.png" alt="proot-distro list"></p>
+<h2 id="安裝-Linux-發行版"><a href="#安裝-Linux-發行版" class="headerlink" title="安裝 Linux 發行版"></a>安裝 Linux 發行版</h2><p>安裝你想要的 Linux 發行版，這裡我選擇 ubuntu</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proot-distro install ubuntu</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/g8rUA3h.png" alt="proot-distro install ubuntu"><br><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/UCsrcnn.png" alt="proot-distro install ubuntu"></p>
+<h2 id="登入"><a href="#登入" class="headerlink" title="登入"></a>登入</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proot-distro login ubuntu</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/7CKXSQC.png" alt="proot-distro login ubuntu"></p>
+<h2 id="更新-1"><a href="#更新-1" class="headerlink" title="更新"></a>更新</h2><p>依照慣例，先更新一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt update &amp;&amp; apt upgrade</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/Bewfflj.png" alt="apt update &amp;&amp; apt upgrade"></p>
+<h2 id="安裝-wget"><a href="#安裝-wget" class="headerlink" title="安裝 wget"></a>安裝 wget</h2><p>安裝 wget，稍後會用到</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install wget</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/QoclSV6.png" alt="apt update &amp;&amp; apt upgrade"></p>
+<h1 id="配置-Visual-Studio-Code-Server"><a href="#配置-Visual-Studio-Code-Server" class="headerlink" title="配置 Visual Studio Code Server"></a>配置 Visual Studio Code Server</h1><h2 id="安裝-Visual-Studio-Code-Server"><a href="#安裝-Visual-Studio-Code-Server" class="headerlink" title="安裝 Visual Studio Code Server"></a>安裝 Visual Studio Code Server</h2><p>安裝 <a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/remote/vscode-server">Visual Studio Code Server</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O- https://aka.ms/install-vscode-server/setup.sh | sh</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/4prJUF3.png" alt="install VS Code Server"></p>
+<h2 id="列出可用指令"><a href="#列出可用指令" class="headerlink" title="列出可用指令"></a>列出可用指令</h2><p>我們可以用 <code>--help</code> 列出可用指令，這裡擷取一部份</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code-server -h</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/xUjwgk6.png" alt="code-server -h"><br><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/IQfzrz0.png" alt="code-server -h"></p>
+<h2 id="serve-local"><a href="#serve-local" class="headerlink" title="serve-local"></a>serve-local</h2><p>這次我們要使用的是 <code>serve-local</code>，因為 VS Code Server 的服務還是在 private preview，要填表單申請<br>而且 local 畢竟比較穩定，當然你還是可以去<a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/remote/vscode-server#_how-can-i-get-access-to-the-vs-code-server">申請</a></p>
+<p>一樣列出可用指令，這裡擷取一部份</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code-server serve-local -h</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/t5Wdd4L.png" alt="serve-local -h"><br><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/i2WYy43.png" alt="serve-local -h"></p>
+<p>我們可以自行指定 port , bound interface，VS Code 版本等等…<br>interface 部分，我自己測試，如果讓他 bind 0.0.0.0 從外部(非 localhost)直接連，<br>會有部分東西顯示不出來(e.g. extension’s details page)，所以還是走預設讓他 bind 127.0.0.1</p>
+<h2 id="啟動-Visual-Studio-Code-Server"><a href="#啟動-Visual-Studio-Code-Server" class="headerlink" title="啟動 Visual Studio Code Server"></a>啟動 Visual Studio Code Server</h2><p>版本我選 <code>insiders</code>，首次啟動會要你同意授權條款，同意即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code-serve serve-local --quality insiders</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/Ry8EWWX.png" alt="code-serve serve-local --quality insiders"></p>
+<p>如果要停止，使用 <code>ctrl+c</code></p>
+<h2 id="進入-Web-UI"><a href="#進入-Web-UI" class="headerlink" title="進入 Web UI"></a>進入 Web UI</h2><p>在瀏覽器開啟那串 URL 即可</p>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/swVyozA.png" alt="URL"></p>
+<div class="fj-gallery"><p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/Ig3JZHm.jpg" alt="Web UI"></p>
+          </div>
+
+
+
+<h1 id="補充-從電腦連手機的-Visual-Studio-Code-Server"><a href="#補充-從電腦連手機的-Visual-Studio-Code-Server" class="headerlink" title="補充 - 從電腦連手機的 Visual Studio Code Server"></a>補充 - 從電腦連手機的 Visual Studio Code Server</h1><p>為了方便，你可以選擇在電腦上處理配置，但由於前面提到的原因，直接連會有些顯示問題，<br>這裡我們使用 SSH Tunneling 解決</p>
+<h2 id="Local-Port-Forwarding"><a href="#Local-Port-Forwarding" class="headerlink" title="Local Port Forwarding"></a>Local Port Forwarding</h2><p>電腦再開一個 Terminal，使用中保持其存在，從前面得知預設 port 為 <code>8000</code></p>
+<p>Local Port Forwarding 指令語法</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh <span class="literal">-L</span> [<span class="type">bind_address</span>:]&lt;port&gt;:&lt;host&gt;:&lt;host_port&gt; &lt;SSH Server&gt;</span><br></pre></td></tr></table></figure>
+
+<p>但別忘了 Termux 預設的 SSH port 為 <code>8022</code></p>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/sKsB7Kv.png" alt="Local Port Forwarding"></p>
+<h2 id="進入-Web-UI-1"><a href="#進入-Web-UI-1" class="headerlink" title="進入 Web UI"></a>進入 Web UI</h2><p>在瀏覽器開啟那串 URL 即可</p>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/UqOJfGB.png" alt="URL"></p>
+<h1 id="補充-全螢幕"><a href="#補充-全螢幕" class="headerlink" title="補充 - 全螢幕"></a>補充 - 全螢幕</h1><p>目前找到比較簡單的方法，但要注意產出的桌面捷徑的 <code>URL</code> 是固定的，如果 <code>tkn</code> 改變了，捷徑會失效</p>
+<div class="fj-gallery"><p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/RGunNs2.jpg" alt="fullscreen"></p>
+          </div>
+
+
+
+<h1 id="補充-安裝-C-C-debug-相關工具"><a href="#補充-安裝-C-C-debug-相關工具" class="headerlink" title="補充 - 安裝 C,C++,debug 相關工具"></a>補充 - 安裝 C,C++,debug 相關工具</h1><p>基本上就跟在 Linux 安裝一樣，既然都裝了就順便寫一下</p>
+<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install build-essential gdb</span><br></pre></td></tr></table></figure>
+
+<h2 id="確認-g-版本"><a href="#確認-g-版本" class="headerlink" title="確認 g++ 版本"></a>確認 g++ 版本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ --version</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/Tf9rAXO.png" alt="g++ --version"></p>
+<h1 id="補充-安裝-Python"><a href="#補充-安裝-Python" class="headerlink" title="補充 - 安裝 Python"></a>補充 - 安裝 Python</h1><h2 id="安裝-1"><a href="#安裝-1" class="headerlink" title="安裝"></a>安裝</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install python3</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/SCDsTE8.png" alt="apt install python3"></p>
+<h2 id="確認-Python-版本"><a href="#確認-Python-版本" class="headerlink" title="確認 Python 版本"></a>確認 Python 版本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 --version</span><br></pre></td></tr></table></figure>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/eQJvTi6.png" alt="python3 --version"></p>
+<h1 id="補充-存取手機儲存空間"><a href="#補充-存取手機儲存空間" class="headerlink" title="補充 - 存取手機儲存空間"></a>補充 - 存取手機儲存空間</h1><p>我們可以看到，ubuntu 這邊是自己的空間</p>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/XfAShrG.png" alt="ls -a"></p>
+<p>往上層走可以看到手機儲存空間 <code>sdcard</code></p>
+<p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/pWuN4LQ.png" alt="cd .."></p>
+<p>建議檔案還是放在 ubuntu 的空間下，(可建個資料夾整理)，避免 coding 時出現權限等奇怪的問題，要拿檔案時再複製</p>
+<h1 id="Demo-展示"><a href="#Demo-展示" class="headerlink" title="Demo 展示"></a>Demo 展示</h1><h2 id="手機"><a href="#手機" class="headerlink" title="手機"></a>手機</h2><div class="fj-gallery"><p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/YrVGB3e.jpg" alt="demo_phone"><br><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/d0yBLKh.jpg" alt="demo_phone"><br><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/MV6tkyk.jpg" alt="demo_phone"></p>
+          </div>
+
+<h2 id="電腦"><a href="#電腦" class="headerlink" title="電腦"></a>電腦</h2><div class="fj-gallery"><p><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/ZhQL2jT.png" alt="demo_phone"><br><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/bLJTyxA.png" alt="demo_phone"></p>
+          </div>
+
+
+
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>可能有人會問為甚麼不用 VNC，一來是 proot 有效能折損，不如直接在手機瀏覽器跑，<br>再者是因為 Android 12，使用 VNC 等比較吃 CPU 東西的時候，Termux 可能會遇到 <code>Signal 9</code> 的問題</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://gist.github.com/agnostic-apollo/dc7e47991c512755ff26bd2d31e72ca8">Android Phantom, Cached And Empty Processes</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/termux/termux-app/issues/2366#issuecomment-1009269410">issue #2366 comment-1009269410</a></li>
+</ul>
+<p>話說不知不覺就寫了一大篇，如果想再更方便一點也可以加個藍芽鍵盤，或是拿平板，<br>Visual Studio Code 的 extensions 大部分都可以正常安裝，用作簡單的 coding，還是蠻方便的</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/termux/termux-app">https://github.com/termux/termux-app</a></li>
+<li><a target="_blank" rel="noopener" href="https://wiki.termux.com/wiki/Internal_and_external_storage">https://wiki.termux.com/wiki/Internal_and_external_storage</a></li>
+<li><a target="_blank" rel="noopener" href="https://wiki.termux.com/wiki/Remote_Access">https://wiki.termux.com/wiki/Remote_Access</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/termux/proot-distro">https://github.com/termux/proot-distro</a></li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/remote/vscode-server">https://code.visualstudio.com/docs/remote/vscode-server</a></li>
+<li><a target="_blank" rel="noopener" href="https://johnliu55.tw/ssh-tunnel.html">https://johnliu55.tw/ssh-tunnel.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/cpp/config-linux">https://code.visualstudio.com/docs/cpp/config-linux</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://stardusstt.github.io">星雨月奈</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章連結: </span><span class="post-copyright-info"><a href="https://stardusstt.github.io/posts/fd522b9b8d6d/">https://stardusstt.github.io/posts/fd522b9b8d6d/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="https://stardusstt.github.io" target="_blank">月奈 · 筆記</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Android/">Android</a><a class="post-meta__tags" href="/tags/Termux/">Termux</a><a class="post-meta__tags" href="/tags/Linux/">Linux</a><a class="post-meta__tags" href="/tags/Visual-Studio-Code/">Visual Studio Code</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 評論</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "/img/loading.svg" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">星雨月奈</div><div class="author-info__description">崇拜...是距離理解最遠的感情。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Stardusstt"><i class="fa-brands fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Stardusstt" target="_blank" title="Github"><i class="fa-brands fa-github"></i></a><a class="social-icon" href="https://home.gamer.com.tw/profile/index.php?owner=Stardusstt" target="_blank" title="巴哈姆特"><i class="fa-solid fa-dragon"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">你可以通過右下角的按鈕切換深色模式</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B0%A1%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">簡介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Termux-%E7%92%B0%E5%A2%83%E5%BB%BA%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">Termux 環境建置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Termux"><span class="toc-number">3.1.</span> <span class="toc-text">安裝 Termux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%8F%96%E6%89%8B%E6%A9%9F%E7%9A%84%E5%84%B2%E5%AD%98%E7%A9%BA%E9%96%93"><span class="toc-number">3.2.</span> <span class="toc-text">存取手機的儲存空間</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0"><span class="toc-number">3.3.</span> <span class="toc-text">更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-OpenSSH"><span class="toc-number">3.4.</span> <span class="toc-text">安裝 OpenSSH</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-SSH-server%EF%BC%8C%E5%BE%9E%E9%9B%BB%E8%85%A6%E6%89%93%E6%8C%87%E4%BB%A4-%E5%8F%AF%E9%81%B8"><span class="toc-number">4.</span> <span class="toc-text">配置 SSH server，從電腦打指令 (可選)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%AF%86%E7%A2%BC"><span class="toc-number">4.1.</span> <span class="toc-text">配置密碼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%95%9F%E5%8B%95-OpenSSH-server"><span class="toc-number">4.2.</span> <span class="toc-text">啟動 OpenSSH server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A2%BA%E8%AA%8D%E4%BD%BF%E7%94%A8%E8%80%85"><span class="toc-number">4.3.</span> <span class="toc-text">確認使用者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A2%BA%E8%AA%8D%E6%89%8B%E6%A9%9F-IP"><span class="toc-number">4.4.</span> <span class="toc-text">確認手機 IP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%9E%E9%9B%BB%E8%85%A6%E7%99%BB%E5%85%A5"><span class="toc-number">4.5.</span> <span class="toc-text">從電腦登入</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-%E7%92%B0%E5%A2%83%E5%BB%BA%E7%BD%AE"><span class="toc-number">5.</span> <span class="toc-text">Linux 環境建置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-proot-distro"><span class="toc-number">5.1.</span> <span class="toc-text">安裝 proot-distro</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#proot-distro-list"><span class="toc-number">5.2.</span> <span class="toc-text">proot-distro list</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Linux-%E7%99%BC%E8%A1%8C%E7%89%88"><span class="toc-number">5.3.</span> <span class="toc-text">安裝 Linux 發行版</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BB%E5%85%A5"><span class="toc-number">5.4.</span> <span class="toc-text">登入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0-1"><span class="toc-number">5.5.</span> <span class="toc-text">更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-wget"><span class="toc-number">5.6.</span> <span class="toc-text">安裝 wget</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-Visual-Studio-Code-Server"><span class="toc-number">6.</span> <span class="toc-text">配置 Visual Studio Code Server</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Visual-Studio-Code-Server"><span class="toc-number">6.1.</span> <span class="toc-text">安裝 Visual Studio Code Server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E5%87%BA%E5%8F%AF%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="toc-number">6.2.</span> <span class="toc-text">列出可用指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#serve-local"><span class="toc-number">6.3.</span> <span class="toc-text">serve-local</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%95%9F%E5%8B%95-Visual-Studio-Code-Server"><span class="toc-number">6.4.</span> <span class="toc-text">啟動 Visual Studio Code Server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%B2%E5%85%A5-Web-UI"><span class="toc-number">6.5.</span> <span class="toc-text">進入 Web UI</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A3%9C%E5%85%85-%E5%BE%9E%E9%9B%BB%E8%85%A6%E9%80%A3%E6%89%8B%E6%A9%9F%E7%9A%84-Visual-Studio-Code-Server"><span class="toc-number">7.</span> <span class="toc-text">補充 - 從電腦連手機的 Visual Studio Code Server</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Local-Port-Forwarding"><span class="toc-number">7.1.</span> <span class="toc-text">Local Port Forwarding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%B2%E5%85%A5-Web-UI-1"><span class="toc-number">7.2.</span> <span class="toc-text">進入 Web UI</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A3%9C%E5%85%85-%E5%85%A8%E8%9E%A2%E5%B9%95"><span class="toc-number">8.</span> <span class="toc-text">補充 - 全螢幕</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A3%9C%E5%85%85-%E5%AE%89%E8%A3%9D-C-C-debug-%E7%9B%B8%E9%97%9C%E5%B7%A5%E5%85%B7"><span class="toc-number">9.</span> <span class="toc-text">補充 - 安裝 C,C++,debug 相關工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D"><span class="toc-number">9.1.</span> <span class="toc-text">安裝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A2%BA%E8%AA%8D-g-%E7%89%88%E6%9C%AC"><span class="toc-number">9.2.</span> <span class="toc-text">確認 g++ 版本</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A3%9C%E5%85%85-%E5%AE%89%E8%A3%9D-Python"><span class="toc-number">10.</span> <span class="toc-text">補充 - 安裝 Python</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-1"><span class="toc-number">10.1.</span> <span class="toc-text">安裝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A2%BA%E8%AA%8D-Python-%E7%89%88%E6%9C%AC"><span class="toc-number">10.2.</span> <span class="toc-text">確認 Python 版本</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A3%9C%E5%85%85-%E5%AD%98%E5%8F%96%E6%89%8B%E6%A9%9F%E5%84%B2%E5%AD%98%E7%A9%BA%E9%96%93"><span class="toc-number">11.</span> <span class="toc-text">補充 - 存取手機儲存空間</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Demo-%E5%B1%95%E7%A4%BA"><span class="toc-number">12.</span> <span class="toc-text">Demo 展示</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E6%A9%9F"><span class="toc-number">12.1.</span> <span class="toc-text">手機</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%BB%E8%85%A6"><span class="toc-number">12.2.</span> <span class="toc-text">電腦</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E"><span class="toc-number">13.</span> <span class="toc-text">結語</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References"><span class="toc-number">14.</span> <span class="toc-text">References</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/fd522b9b8d6d/" title="連筆電都懶得帶? 那就在 Android 上跑 VS Code 吧! | Termux , PRoot , VS Code Server"><img src= "/img/loading.svg" data-lazy-src="https://i.imgur.com/5kqtPtu.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="連筆電都懶得帶? 那就在 Android 上跑 VS Code 吧! | Termux , PRoot , VS Code Server"/></a><div class="content"><a class="title" href="/posts/fd522b9b8d6d/" title="連筆電都懶得帶? 那就在 Android 上跑 VS Code 吧! | Termux , PRoot , VS Code Server">連筆電都懶得帶? 那就在 Android 上跑 VS Code 吧! | Termux , PRoot , VS Code Server</a><time datetime="2022-08-13T15:47:00.780Z" title="更新於 2022-08-13 23:47:00">2022-08-13</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2022 By 星雨月奈</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直達評論"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到頂部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadGiscus () {
+  let nowTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+
+  const config = Object.assign({
+    src: 'https://giscus.app/client.js',
+    'data-repo': 'Stardusstt/blog',
+    'data-repo-id': 'R_kgDOHxKfdw',
+    'data-category-id': 'DIC_kwDOHxKfd84CQntH',
+    'data-mapping': 'pathname',
+    'data-theme': nowTheme,
+    'data-reactions-enabled': '1',
+    crossorigin: 'anonymous',
+    async: true
+  },null)
+
+  let ele = document.createElement('script')
+  for (let key in config) {
+    ele.setAttribute(key, config[key])
+  }
+  document.getElementById('giscus-wrap').insertAdjacentElement('afterbegin',ele)
+}
+
+function changeGiscusTheme () {
+  const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+
+  function sendMessage(message) {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+  }
+
+  sendMessage({
+    setConfig: {
+      theme: theme
+    }
+  });
+}
+
+if ('Giscus' === 'Giscus' || !false) {
+  if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+  else loadGiscus()
+} else {
+  function loadOtherComment () {
+    loadGiscus()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
