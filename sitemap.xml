@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://stardusstt.github.io/posts/49f3df829630/</loc>
+    
+    <lastmod>2022-10-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://stardusstt.github.io/about/index.html</loc>
     
     <lastmod>2022-08-24</lastmod>
@@ -49,7 +58,7 @@
 
   <url>
     <loc>https://stardusstt.github.io/</loc>
-    <lastmod>2022-08-24</lastmod>
+    <lastmod>2022-10-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -57,28 +66,49 @@
   
   <url>
     <loc>https://stardusstt.github.io/tags/Android/</loc>
-    <lastmod>2022-08-24</lastmod>
+    <lastmod>2022-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://stardusstt.github.io/tags/Termux/</loc>
-    <lastmod>2022-08-24</lastmod>
+    <lastmod>2022-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://stardusstt.github.io/tags/Linux/</loc>
-    <lastmod>2022-08-24</lastmod>
+    <lastmod>2022-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://stardusstt.github.io/tags/Visual-Studio-Code/</loc>
-    <lastmod>2022-08-24</lastmod>
+    <lastmod>2022-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stardusstt.github.io/tags/C/</loc>
+    <lastmod>2022-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stardusstt.github.io/tags/C-20/</loc>
+    <lastmod>2022-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stardusstt.github.io/tags/C-20-Modules/</loc>
+    <lastmod>2022-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -87,7 +117,14 @@
   
   <url>
     <loc>https://stardusstt.github.io/categories/Android/</loc>
-    <lastmod>2022-08-24</lastmod>
+    <lastmod>2022-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://stardusstt.github.io/categories/C-%C2%B7-%E5%82%B3%E7%B5%B1%E8%88%87%E9%9D%A9%E6%96%B0%E7%9A%84%E7%A9%BA%E9%96%93/</loc>
+    <lastmod>2022-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

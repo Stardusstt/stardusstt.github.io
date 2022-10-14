@@ -1,3 +1,4 @@
+https://stardusstt.github.io/posts/49f3df829630/
 https://stardusstt.github.io/about/index.html
 https://stardusstt.github.io/posts/a06cd0bcf42f/
 https://stardusstt.github.io/comments/index.html
@@ -8,4 +9,8 @@ https://stardusstt.github.io/tags/Android/
 https://stardusstt.github.io/tags/Termux/
 https://stardusstt.github.io/tags/Linux/
 https://stardusstt.github.io/tags/Visual-Studio-Code/
+https://stardusstt.github.io/tags/C/
+https://stardusstt.github.io/tags/C-20/
+https://stardusstt.github.io/tags/C-20-Modules/
 https://stardusstt.github.io/categories/Android/
+https://stardusstt.github.io/categories/C-%C2%B7-%E5%82%B3%E7%B5%B1%E8%88%87%E9%9D%A9%E6%96%B0%E7%9A%84%E7%A9%BA%E9%96%93/
